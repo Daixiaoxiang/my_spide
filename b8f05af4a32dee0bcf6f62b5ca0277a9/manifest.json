@@ -1,0 +1,68 @@
+{
+	"manifest_version": 2,
+	"name": "lightUp-plugin-内部版",
+	"description": "LightUp专属chrome插件，仅限内部用户使用。",
+	"version": "4.3.0",
+	"browser_action": {
+		"default_title": "极速浏览器插件，边刷简历，边上传到LightUp",
+		"default_icon": "assets/logo_48.png",
+		"default_popup": "popup.html"
+	},
+	"permissions": [
+		"http://*/*",
+		"https://*/*",
+		"cookies",
+		"background",
+		"notifications",
+		"storage",
+		"tabs",
+		"contextMenus",
+		"management",
+		"webRequest",
+		"webRequestBlocking"
+	],
+	"background": {
+		"scripts": [
+			"js/chunk-common.js",
+			"js/background.js"
+		]
+	},
+	"icons": {
+		"16": "assets/logo_16.png",
+		"48": "assets/logo_48.png",
+		"128": "assets/logo_128.png"
+	},
+	"content_security_policy": "script-src 'self' 'unsafe-eval'; object-src 'self'",
+	"content_scripts": [
+		{
+			"all_frames": true,
+			"matches": [
+				"https://*.liepin.com/*",
+				"https://h.liepin.com/resume/showresumedetail/*",
+				"https://rd6.zhaopin.com/*",
+				"https://www.zhipin.com/*",
+				"https://lightuphr.cn/*",
+				"http://lightuphr.cn/*",
+				"https://www.lightuphr.cn/*",
+				"http://www.lightuphr.cn/*",
+				"https://lightup.mdnote.cn/*",
+				"http://lightup.mdnote.cn/*",
+				"https://maimai.cn/*",
+				"https://ehire.51job.com/Revision/*",
+				"https://www.linkedin.com/*"
+			],
+			"js": [
+				"assets/jquery-1.12.4.min.js",
+				"js/chunk-common.js",
+				"js/content.js"
+			],
+			"run_at": "document_end"
+		}
+	],
+	"web_accessible_resources": [
+		"js/inject.js",
+		"/assets/*"
+	],
+	"update_url": "http://lightuphr.cn/download/plugin/update.xml",
+	"key": "MIIBIjANBgkqhkiG9w0BAQEFAAOCAQ8AMIIBCgKCAQEAyrVekTWVexh6xa+TPar3okZuuzvtIx5LNPGxFPPtD5Mru+/vQW2JD6MUIzenG0QNeNMwDV8DJlG4JCTqbXqSxzULfdLHgcuOJjmKiK5EpRRKoQ4AY0fb//UN4r0cuLBl2X6bAhoxeC+VymiUr43y95Cc8kOOmgxLQjxh4Z1E5eZ2iW+thOUD7vEnCrLon4Js7iT1x8SSvsfmq+u2mfC5GiYnb/9RHSAGf0Gs8hh5B3JP3zCwubHZEz1LP+IER+//wfSR0vIt49+5FpMozA7CzywE+xRXu/PTObDodmi2Qxre0jukmnk50Q4EBOt9mnRllyS+LSLSIbeQvwY/2tLv4wIDAQAB"
+}
